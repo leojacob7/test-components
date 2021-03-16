@@ -28,7 +28,8 @@ const MultiValueDropDownIndicator = props => {
 };
 
 function MultiSelect(props) {
-  const [ selectOptions, setSelectOptions ] = useState(props.options)
+  const [ selectOptions, setSelectOptions ] = useState(props.options);
+  const [isResetted, setIsResetted] = useState(props.isReset)
   const [ selectValue, setSelectValue ] = useState(isEmpty(props.defaultValue) ? [] : props.defaultValue);
 
   const onChange = (val) => {
@@ -36,7 +37,7 @@ function MultiSelect(props) {
     props.onUnSetReset();
   }
   let spreadValues = isEmpty(props.defaultValue) ? selectValue : [...props.defaultValue, ...selectValue];
-  const values = props.isReset ? [] : uniqBy(spreadValues, 'value');
+  const values = isResetted ? [] : uniqBy(spreadValues, 'value');
   return (<Select
     closeMenuOnSelect={false}
     components={{

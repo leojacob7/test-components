@@ -80,7 +80,8 @@ export default function MultiSelectContainer(props) {
     }
 
     const resetSelection = () => {
-        setIsResetInitiated(true)
+        setIsResetInitiated(true);
+        setSelectedOption({});
     }
 
     const onUnSetReset = () => {

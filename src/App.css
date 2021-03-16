@@ -62,3 +62,15 @@ div.css-1rhbuit-multiValue>div:nth-child(2):hover {
 .multiSelect {
   height: 100%;
 }
+
+.firstSection{
+  display: flex;
+  display: flex;
+  align-items: center;
+}
+
+.aboutSeparator {
+  display: flex;
+  width: 120%;
+  justify-content: space-between;
+}
