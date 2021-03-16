@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 .App-logo {
@@ -35,4 +36,29 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+div[class*=control] {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.clearIndicatorSelect {
+  margin-left: 10px;
+}
+
+div.css-1rhbuit-multiValue>div:nth-child(2) {
+  /* display: none; */
+  background: #ab9ce6;
+  color: #4808bf;
+}
+
+div.css-1rhbuit-multiValue>div:nth-child(2):hover {
+  /* display: none; */
+  background: #ab9ce6;
+  color: #4808bf;
+}
+
+.multiSelect {
+  height: 100%;
 }
