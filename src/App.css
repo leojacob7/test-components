@@ -74,3 +74,18 @@ div.css-1rhbuit-multiValue>div:nth-child(2):hover {
   width: 120%;
   justify-content: space-between;
 }
+
+.trashIcon {
+  margin-right: 8px;
+}
+
+.trashIcon > svg {
+  margin-right: 8px;
+  color: #4808bf;;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #4b4d4f;
+  font-size: 16px;
+  padding-left: 8px;
+}

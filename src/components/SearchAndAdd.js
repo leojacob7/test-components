@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faTrash } from '@fortawesome/free-solid-svg-icons';
 import DropDownPopover from "./DropDownPopOver";
 import Portal from "./Portal";
-import { cloneDeep, reject } from "lodash"
+import { cloneDeep } from "lodash"
 
 const Wrapper = styled.div`
     display: flex;
@@ -46,6 +46,7 @@ const Input = styled.input`
 height: 60px;
 width: 100%;
 background: #d1d5de;
+border-radius: 4px;
 `;
 
 const Button = styled.div`
@@ -55,6 +56,8 @@ background: #0f3ca3;
 display: flex;
 align-items: center;
 justify-content: center;
+color: white;
+border-radius: 4px;
 `;
 
 const DropDownContainer = styled.span`
@@ -136,7 +139,6 @@ const SearchAndAdd = (props) => {
             role: option
         }
     ];
-    console.log('temp :>> ', temp);
       setUserData([
           ...unMatchedusers,
           {
@@ -146,9 +148,14 @@ const SearchAndAdd = (props) => {
       ]);
   }
 
+  const deleteUser = selectedUser => {
+    const filteredUsers = userData.filter(user => user.name !== selectedUser.name);
+    setUserData(filteredUsers)
+  }
+
   const renderOptionsNode = () => {
       const { users } = props
-      return users.map(user =>{
+      return userData.map(user =>{
           const avatar = user.name.split(' ')
           return (
               <PermissionDropdown>
@@ -170,6 +177,9 @@ const SearchAndAdd = (props) => {
                         }}
                     >{user.role} <FontAwesomeIcon icon={faChevronDown} />
                     </DropDownContainer>
+                    <div className="trashIcon" onClick={() => deleteUser(user)}>
+                    <FontAwesomeIcon icon={faTrash} />
+                    </div>
                     { isOn && (
                         <Portal>
                         <DropDownPopover
@@ -192,7 +202,7 @@ const SearchAndAdd = (props) => {
             <Container>
             <ModifierSection>
                 <InputContainer>
-                    <Input />
+                    <Input placeholder="Add name or email"/>
                     <DropDownContainer
                         ref={btnRef}
                         onClick={(e) => {
